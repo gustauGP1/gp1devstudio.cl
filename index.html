@@ -1236,30 +1236,39 @@ footer nav a:hover { color: var(--text); }
 
       <div class="contact-form-block reveal">
         <div class="form-title">Envíanos un mensaje</div>
-        <div class="form-row">
-          <label>Nombre</label>
-          <input type="text" placeholder="Tu nombre o empresa">
+        <div data-fs-success style="display:none;padding:1.2rem;background:rgba(34,197,94,0.1);border:1px solid rgba(34,197,94,0.3);border-radius:8px;color:#22c55e;font-size:0.95rem;margin-bottom:1rem;">
+          ✓ Mensaje enviado. Te respondemos en menos de 24 horas hábiles.
         </div>
-        <div class="form-row">
-          <label>Email</label>
-          <input type="email" placeholder="correo@empresa.com">
-        </div>
-        <div class="form-row">
-          <label>Tipo de proyecto</label>
-          <select>
-            <option value="">Selecciona una opción</option>
-            <option>Bot con IA / Automatización</option>
-            <option>App móvil Android</option>
-            <option>Sitio / Herramienta web</option>
-            <option>Consultoría técnica</option>
-            <option>Otro</option>
-          </select>
-        </div>
-        <div class="form-row">
-          <label>Mensaje</label>
-          <textarea placeholder="Cuéntanos de tu proyecto, idea o consulta..."></textarea>
-        </div>
-        <button class="form-submit" onclick="handleSubmit(this)">Enviar mensaje →</button>
+        <div data-fs-error style="display:none;padding:1.2rem;background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.3);border-radius:8px;color:#ef4444;font-size:0.95rem;margin-bottom:1rem;"></div>
+        <form id="contact-form">
+          <div class="form-row">
+            <label for="fs-name">Nombre</label>
+            <input type="text" id="fs-name" name="name" placeholder="Tu nombre o empresa" data-fs-field required>
+            <span data-fs-error="name" style="color:#ef4444;font-size:0.8rem;display:block;margin-top:4px"></span>
+          </div>
+          <div class="form-row">
+            <label for="fs-email">Email</label>
+            <input type="email" id="fs-email" name="email" placeholder="correo@empresa.com" data-fs-field required>
+            <span data-fs-error="email" style="color:#ef4444;font-size:0.8rem;display:block;margin-top:4px"></span>
+          </div>
+          <div class="form-row">
+            <label for="fs-tipo">Tipo de proyecto</label>
+            <select id="fs-tipo" name="tipo_proyecto" data-fs-field>
+              <option value="">Selecciona una opción</option>
+              <option>Bot con IA / Automatización</option>
+              <option>App móvil Android</option>
+              <option>Sitio / Herramienta web</option>
+              <option>Consultoría técnica</option>
+              <option>Otro</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label for="fs-mensaje">Mensaje</label>
+            <textarea id="fs-mensaje" name="message" placeholder="Cuéntanos de tu proyecto, idea o consulta..." data-fs-field></textarea>
+            <span data-fs-error="message" style="color:#ef4444;font-size:0.8rem;display:block;margin-top:4px"></span>
+          </div>
+          <button type="submit" class="form-submit" data-fs-submit-btn>Enviar mensaje →</button>
+        </form>
       </div>
     </div>
   </div>
@@ -1296,13 +1305,9 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.1 });
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-// Form submit
-function handleSubmit(btn) {
-  btn.textContent = 'Mensaje enviado ✓';
-  btn.style.background = 'var(--green)';
-  btn.style.color = '#0A0A0E';
-  btn.disabled = true;
-}
+// Formspree init
+window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
+formspree('initForm', { formElement: '#contact-form', formId: 'xwvjener' });
 
 // Hamburger menu
 const hamburger = document.getElementById('hamburger');
@@ -1324,5 +1329,6 @@ document.querySelectorAll('.mobile-link').forEach(link => {
   });
 });
 </script>
+<script src="https://unpkg.com/@formspree/ajax@1" defer></script>
 </body>
 </html>
