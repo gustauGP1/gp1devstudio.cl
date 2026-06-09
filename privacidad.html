@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Política de Privacidad — GP1 DevStudio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black:   #0B0B0B;
+      --blue:    #2563EB;
+      --blue-dim: #1d4ed8;
+      --white:   #FFFFFF;
+      --gray-50: #F8FAFC;
+      --gray-100:#F1F5F9;
+      --gray-200:#E2E8F0;
+      --gray-500:#64748B;
+      --gray-700:#374151;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--white);
+      color: var(--black);
+      line-height: 1.7;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      background: var(--white);
+      border-bottom: 1px solid var(--gray-200);
+      padding: 0 2rem;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 100;
+    }
+    .nav-logo {
+      font-weight: 700;
+      font-size: 1rem;
+      text-decoration: none;
+      color: var(--black);
+      letter-spacing: -0.02em;
+    }
+    .nav-logo span { color: var(--blue); }
+    nav a.back {
+      font-size: 0.8125rem;
+      font-weight: 500;
+      color: var(--blue);
+      text-decoration: none;
+    }
+    nav a.back:hover { text-decoration: underline; }
+
+    /* ── LAYOUT ── */
+    .wrapper {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 3.5rem 2rem 6rem;
+    }
+
+    /* ── HEADER ── */
+    .doc-header {
+      padding-bottom: 2rem;
+      border-bottom: 2px solid var(--black);
+      margin-bottom: 2.5rem;
+    }
+    .doc-header .eyebrow {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 0.75rem;
+    }
+    .doc-header h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+    .doc-header .meta {
+      font-size: 0.8125rem;
+      color: var(--gray-500);
+    }
+    .doc-header .meta strong { color: var(--black); }
+
+    /* ── INTRO BOX ── */
+    .intro-box {
+      background: var(--gray-50);
+      border-left: 3px solid var(--blue);
+      padding: 1.25rem 1.5rem;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 2.5rem;
+      font-size: 0.9rem;
+      color: var(--gray-700);
+    }
+
+    /* ── SECTIONS ── */
+    section { margin-bottom: 2.5rem; }
+    section h2 {
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.4rem;
+      border-bottom: 1px solid var(--gray-200);
+    }
+    section p, section li {
+      font-size: 0.9rem;
+      color: var(--gray-700);
+      margin-bottom: 0.5rem;
+    }
+    section ul {
+      padding-left: 1.25rem;
+      margin-top: 0.25rem;
+    }
+    section ul li { margin-bottom: 0.35rem; }
+
+    /* ── TABLE ── */
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+      margin-top: 0.75rem;
+    }
+    .data-table th {
+      background: var(--black);
+      color: var(--white);
+      font-weight: 600;
+      text-align: left;
+      padding: 0.6rem 0.9rem;
+      font-size: 0.78rem;
+      letter-spacing: 0.03em;
+    }
+    .data-table td {
+      padding: 0.6rem 0.9rem;
+      border-bottom: 1px solid var(--gray-200);
+      color: var(--gray-700);
+      vertical-align: top;
+    }
+    .data-table tr:last-child td { border-bottom: none; }
+    .data-table tr:nth-child(even) td { background: var(--gray-50); }
+
+    /* ── HIGHLIGHT ── */
+    .highlight {
+      background: #EFF6FF;
+      border: 1px solid #BFDBFE;
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+      font-size: 0.875rem;
+      color: var(--gray-700);
+      margin-top: 0.75rem;
+    }
+    .highlight strong { color: var(--blue-dim); }
+
+    /* ── RIGHTS LIST ── */
+    .rights-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 0.75rem;
+      margin-top: 0.75rem;
+    }
+    .right-item {
+      background: var(--gray-50);
+      border: 1px solid var(--gray-200);
+      border-radius: 8px;
+      padding: 0.85rem 1rem;
+      font-size: 0.82rem;
+    }
+    .right-item .label {
+      font-weight: 600;
+      color: var(--black);
+      margin-bottom: 0.25rem;
+    }
+    .right-item p { color: var(--gray-500); margin: 0; font-size: 0.78rem; }
+
+    /* ── CONTACT CARD ── */
+    .contact-card {
+      background: var(--black);
+      color: var(--white);
+      border-radius: 12px;
+      padding: 1.75rem 2rem;
+      margin-top: 0.75rem;
+    }
+    .contact-card h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+      color: var(--white);
+    }
+    .contact-card p {
+      font-size: 0.875rem;
+      color: #CBD5E1;
+      margin-bottom: 0.35rem;
+    }
+    .contact-card a {
+      color: #93C5FD;
+      text-decoration: none;
+    }
+    .contact-card a:hover { text-decoration: underline; }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 1.5rem 2rem;
+      font-size: 0.75rem;
+      color: var(--gray-500);
+      border-top: 1px solid var(--gray-200);
+    }
+
+    @media (max-width: 600px) {
+      .doc-header h1 { font-size: 1.5rem; }
+      .rights-grid { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">GP1 Dev<span>Studio</span></a>
+  <a href="index.html" class="back">← Volver al inicio</a>
+</nav>
+
+<div class="wrapper">
+
+  <header class="doc-header">
+    <p class="eyebrow">Documento legal</p>
+    <h1>Política de Privacidad</h1>
+    <p class="meta">
+      <strong>GP1 DevStudio E.I.R.L.</strong> &nbsp;·&nbsp;
+      RUT 78.420.785-4 &nbsp;·&nbsp;
+      Última actualización: <strong>9 de junio de 2026</strong>
+    </p>
+  </header>
+
+  <div class="intro-box">
+    Esta política describe cómo <strong>GP1 DevStudio E.I.R.L.</strong> recopila, usa y protege
+    los datos personales de los usuarios de sus productos digitales, en cumplimiento de la
+    <strong>Ley 19.628</strong> y la <strong>Ley 21.719</strong> de Protección de Datos Personales
+    de la República de Chile.
+  </div>
+
+  <!-- 1 -->
+  <section>
+    <h2>1. Responsable del tratamiento</h2>
+    <p><strong>Razón social:</strong> Gustavo Ricardo Palma Rodríguez Software GP1 DevStudio E.I.R.L.</p>
+    <p><strong>Nombre fantasía:</strong> GP1 DevStudio</p>
+    <p><strong>RUT:</strong> 78.420.785-4</p>
+    <p><strong>Contacto:</strong> <a href="mailto:gp1devstudio@gmail.com">gp1devstudio@gmail.com</a></p>
+    <p><strong>Sitio web:</strong> <a href="https://gp1devstudio.com">gp1devstudio.com</a></p>
+  </section>
+
+  <!-- 2 -->
+  <section>
+    <h2>2. Productos a los que aplica esta política</h2>
+    <ul>
+      <li><strong>GP1Finance</strong> — Bot de Telegram financiero (@GP1FBOT)</li>
+      <li><strong>Trivia Latam</strong> — Aplicación móvil Android</li>
+      <li><strong>WordVerse</strong> — Aplicación móvil Android</li>
+      <li>Sitio web <strong>gp1devstudio.cl</strong></li>
+    </ul>
+  </section>
+
+  <!-- 3 -->
+  <section>
+    <h2>3. Datos que recopilamos</h2>
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Dato</th>
+          <th>Producto</th>
+          <th>Finalidad</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>ID de usuario Telegram (chat_id)</td>
+          <td>GP1Finance</td>
+          <td>Identificación y entrega del servicio</td>
+        </tr>
+        <tr>
+          <td>Username de Telegram (si está disponible)</td>
+          <td>GP1Finance</td>
+          <td>Identificación del usuario</td>
+        </tr>
+        <tr>
+          <td>Plan de suscripción y fecha de vencimiento</td>
+          <td>GP1Finance</td>
+          <td>Control de acceso a funciones Pro</td>
+        </tr>
+        <tr>
+          <td>Portfolio de activos financieros</td>
+          <td>GP1Finance</td>
+          <td>Funcionalidad de seguimiento de cartera</td>
+        </tr>
+        <tr>
+          <td>Alertas configuradas</td>
+          <td>GP1Finance</td>
+          <td>Envío de notificaciones de precio</td>
+        </tr>
+        <tr>
+          <td>Historial de pagos (referencia MercadoPago)</td>
+          <td>GP1Finance</td>
+          <td>Verificación de suscripción Pro</td>
+        </tr>
+        <tr>
+          <td>Fecha y registro de aceptación de términos</td>
+          <td>GP1Finance</td>
+          <td>Cumplimiento legal Ley 21.719</td>
+        </tr>
+        <tr>
+          <td>ID de usuario Firebase (anónimo)</td>
+          <td>Trivia Latam / WordVerse</td>
+          <td>Autenticación y ranking global</td>
+        </tr>
+        <tr>
+          <td>Puntajes y estadísticas de juego</td>
+          <td>Trivia Latam / WordVerse</td>
+          <td>Ranking y métricas internas</td>
+        </tr>
+        <tr>
+          <td>Datos de uso de anuncios (AdMob)</td>
+          <td>Trivia Latam / WordVerse</td>
+          <td>Monetización — ver política Google AdMob</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- 4 -->
+  <section>
+    <h2>4. Base legal del tratamiento</h2>
+    <p>El tratamiento de datos se realiza bajo las siguientes bases legales:</p>
+    <ul>
+      <li><strong>Consentimiento explícito</strong> — otorgado por el usuario al registrarse en GP1Finance mediante botón de aceptación en el bot.</li>
+      <li><strong>Ejecución del contrato</strong> — necesario para prestar el servicio contratado (suscripción Pro).</li>
+      <li><strong>Interés legítimo</strong> — mejora del servicio, prevención de fraude y cumplimiento de obligaciones legales.</li>
+    </ul>
+  </section>
+
+  <!-- 5 -->
+  <section>
+    <h2>5. Almacenamiento y seguridad</h2>
+    <p>Los datos de GP1Finance se almacenan en <strong>MongoDB Atlas</strong> (nube, servidores en EE.UU. — cumple con cláusulas contractuales estándar). Los datos de las apps móviles se almacenan en <strong>Firebase (Google Cloud)</strong>.</p>
+    <div class="highlight">
+      <strong>Medidas de seguridad implementadas:</strong> acceso restringido por credenciales, autenticación requerida para acceder al cluster de base de datos, variables sensibles almacenadas en entorno del servidor (no en código fuente).
+      <br/><br/>
+      <strong>Mejoras en progreso:</strong> cifrado de campos sensibles en MongoDB (portfolio, datos de pago), auditoría de permisos MongoDB Atlas.
+    </div>
+  </section>
+
+  <!-- 6 -->
+  <section>
+    <h2>6. Compartición con terceros</h2>
+    <p>GP1 DevStudio <strong>no vende</strong> datos personales a terceros. Los datos pueden ser procesados por:</p>
+    <ul>
+      <li><strong>MongoDB Atlas</strong> — almacenamiento de base de datos</li>
+      <li><strong>Telegram</strong> — plataforma de mensajería (datos sujetos a política de Telegram)</li>
+      <li><strong>MercadoPago</strong> — procesamiento de pagos</li>
+      <li><strong>Google Firebase / AdMob</strong> — autenticación, analytics y publicidad en apps móviles</li>
+      <li><strong>Groq / Meta (LLaMA)</strong> — procesamiento de consultas IA (sin datos personales identificables)</li>
+    </ul>
+  </section>
+
+  <!-- 7 -->
+  <section>
+    <h2>7. Retención de datos</h2>
+    <p>Los datos se conservan mientras el usuario mantenga una cuenta activa o hasta que solicite su eliminación. Las referencias de pago se conservan por el tiempo que exigen las obligaciones legales tributarias chilenas.</p>
+  </section>
+
+  <!-- 8 -->
+  <section>
+    <h2>8. Derechos del titular (Ley 21.719)</h2>
+    <div class="rights-grid">
+      <div class="right-item">
+        <div class="label">✅ Acceso</div>
+        <p>Solicitar qué datos tenemos sobre ti</p>
+      </div>
+      <div class="right-item">
+        <div class="label">✏️ Rectificación</div>
+        <p>Corregir datos incorrectos o incompletos</p>
+      </div>
+      <div class="right-item">
+        <div class="label">🗑️ Supresión</div>
+        <p>Solicitar la eliminación de tus datos</p>
+      </div>
+      <div class="right-item">
+        <div class="label">🚫 Oposición</div>
+        <p>Oponerte a ciertos tratamientos de tus datos</p>
+      </div>
+      <div class="right-item">
+        <div class="label">🔒 Portabilidad</div>
+        <p>Recibir tus datos en formato estructurado</p>
+      </div>
+      <div class="right-item">
+        <div class="label">⏸️ Limitación</div>
+        <p>Solicitar la restricción del tratamiento</p>
+      </div>
+    </div>
+    <p style="margin-top: 1rem;">Para ejercer estos derechos, escríbenos a <a href="mailto:gp1devstudio@gmail.com">gp1devstudio@gmail.com</a>. Responderemos en un plazo máximo de <strong>30 días hábiles</strong>.</p>
+    <p>También puedes presentar una reclamación ante el organismo competente en Chile una vez que la Agencia de Protección de Datos esté operativa.</p>
+  </section>
+
+  <!-- 9 -->
+  <section>
+    <h2>9. Disclaimer financiero</h2>
+    <div class="highlight">
+      <strong>⚠️ Importante:</strong> GP1Finance es una herramienta de información financiera. <strong>No constituye asesoría de inversión ni recomendación financiera</strong> en el sentido de la normativa de la Comisión para el Mercado Financiero (CMF). Las decisiones de inversión son de exclusiva responsabilidad del usuario. GP1 DevStudio E.I.R.L. no se hace responsable por pérdidas derivadas del uso de esta información.
+    </div>
+  </section>
+
+  <!-- 10 -->
+  <section>
+    <h2>10. Cookies y rastreo web</h2>
+    <p>El sitio web <strong>gp1devstudio.cl</strong> está alojado en GitHub Pages y no utiliza cookies de rastreo propias. Terceros como Google Fonts pueden establecer cookies técnicas propias sujetas a sus respectivas políticas de privacidad.</p>
+  </section>
+
+  <!-- 11 -->
+  <section>
+    <h2>11. Modificaciones a esta política</h2>
+    <p>GP1 DevStudio puede actualizar esta política cuando sea necesario. Los cambios significativos se notificarán a través del bot GP1Finance o mediante aviso en este sitio. La fecha de la última actualización siempre estará visible al inicio de este documento.</p>
+  </section>
+
+  <!-- 12 -->
+  <section>
+    <h2>12. Contacto</h2>
+    <div class="contact-card">
+      <h3>¿Tienes preguntas sobre tus datos?</h3>
+      <p>Escríbenos a: <a href="mailto:gp1devstudio@gmail.com">gp1devstudio@gmail.com</a></p>
+      <p>Sitio web: <a href="https://gp1devstudio.com">gp1devstudio.com</a></p>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  © 2026 GP1 DevStudio E.I.R.L. — RUT 78.420.785-4 · Chile ·
+  <a href="https://gp1devstudio.com" style="color: inherit;">gp1devstudio.com</a>
+</footer>
+
+</body>
+</html>
