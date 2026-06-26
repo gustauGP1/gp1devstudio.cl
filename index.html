@@ -915,6 +915,59 @@ footer nav a:hover { color: var(--text); }
   .game-screenshot { width: 130px; }
   .trivia-icon { width: 44px; height: 44px; }
 }
+
+/* ─── GP1 FINANCE COUNTDOWN ─── */
+.gp1f-countdown {
+  margin-top: 1.25rem;
+  background: var(--bg);
+  border: 1px solid var(--blue-border);
+  border-radius: 10px;
+  padding: 1rem 1.25rem;
+}
+.gp1f-countdown-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--blue-light);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+}
+.gp1f-countdown-digits {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+.gp1f-unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 52px;
+}
+.gp1f-num {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  font-size: 2rem;
+  line-height: 1;
+  color: var(--text);
+  letter-spacing: -0.02em;
+}
+.gp1f-uname {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  color: var(--text3);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+.gp1f-sep {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  font-size: 1.6rem;
+  color: var(--blue-light);
+  padding-bottom: 1rem;
+  align-self: flex-start;
+  margin-top: 0.1rem;
+}
 </style>
 </head>
 <body>
@@ -1106,15 +1159,27 @@ footer nav a:hover { color: var(--text); }
             <div class="t-line"><span class="t-white"> $5M × 90d → </span><span class="t-green">+$57.234 neto</span></div>
           </div>
         </div>
+        <div class="gp1f-countdown">
+          <div class="gp1f-countdown-label">🚀 Próximo lanzamiento — GP1 Finance v4.0</div>
+          <div class="gp1f-countdown-digits">
+            <div class="gp1f-unit"><span class="gp1f-num" id="gp1f-days">--</span><span class="gp1f-uname">días</span></div>
+            <div class="gp1f-sep">:</div>
+            <div class="gp1f-unit"><span class="gp1f-num" id="gp1f-hours">--</span><span class="gp1f-uname">horas</span></div>
+            <div class="gp1f-sep">:</div>
+            <div class="gp1f-unit"><span class="gp1f-num" id="gp1f-mins">--</span><span class="gp1f-uname">min</span></div>
+            <div class="gp1f-sep">:</div>
+            <div class="gp1f-unit"><span class="gp1f-num" id="gp1f-secs">--</span><span class="gp1f-uname">seg</span></div>
+          </div>
+        </div>
       </div>
     </div>
 
     <!-- MarketPulse Chile — Featured -->
     <div class="project-card featured">
       <div>
-        <div class="project-tag tag-live">
-          <span style="width:6px;height:6px;border-radius:50%;background:var(--green);display:inline-block;"></span>
-          Live v1.0
+        <div class="project-tag tag-dev">
+          <span style="width:6px;height:6px;border-radius:50%;background:var(--orange);display:inline-block;"></span>
+          WIP
         </div>
         <h3 class="project-name">MarketPulse Chile</h3>
         <p class="project-desc">Plataforma de inteligencia de mercado financiero para Chile. Monitorea automáticamente Emol Economía, Diario Financiero y La Tercera Pulso cada hora, clasifica el sentimiento del mercado con NLP en español y entrega alertas en tiempo real vía bot de Telegram. Incluye dashboard interactivo, API REST y sistema de suscripciones con 15 días de prueba gratis. Activo como <strong style="color:var(--text)">@marketpulse_chile_bot</strong>.</p>
@@ -1130,7 +1195,7 @@ footer nav a:hover { color: var(--text); }
         </div>
         <div class="project-metrics">
           <div>
-            <div class="pm-val green">Live</div>
+            <div class="pm-val" style="color:var(--orange)">WIP</div>
             <div class="pm-label">Estado actual</div>
           </div>
           <div>
@@ -1197,6 +1262,8 @@ footer nav a:hover { color: var(--text); }
           <span class="cat-pill">🔬 Ciencia</span>
           <span class="cat-pill">🌎 Geografía</span>
           <span class="cat-pill">🎵 Música</span>
+          <span class="cat-pill">📺 Series y TV</span>
+          <span class="cat-pill">💻 Tecnología</span>
         </div>
       </div>
       <div class="game-screenshot-wrap">
@@ -1371,6 +1438,33 @@ document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
 formspree('initForm', { formElement: '#contact-form', formId: 'xwvjener' });
 
+
+// GP1 Finance countdown
+(function() {
+  var target = new Date('2026-06-26T18:26:00-04:00').getTime();
+  function pad(n) { return n < 10 ? '0' + n : String(n); }
+  function tick() {
+    var now = Date.now();
+    var diff = target - now;
+    if (diff <= 0) {
+      ['gp1f-days','gp1f-hours','gp1f-mins','gp1f-secs'].forEach(function(id){
+        var el = document.getElementById(id); if (el) el.textContent = '00';
+      });
+      return;
+    }
+    var d = Math.floor(diff / 86400000);
+    var h = Math.floor((diff % 86400000) / 3600000);
+    var m = Math.floor((diff % 3600000) / 60000);
+    var s = Math.floor((diff % 60000) / 1000);
+    var el;
+    el = document.getElementById('gp1f-days');   if(el) el.textContent = pad(d);
+    el = document.getElementById('gp1f-hours');  if(el) el.textContent = pad(h);
+    el = document.getElementById('gp1f-mins');   if(el) el.textContent = pad(m);
+    el = document.getElementById('gp1f-secs');   if(el) el.textContent = pad(s);
+  }
+  tick();
+  setInterval(tick, 1000);
+})();
 // Hamburger menu
 const hamburger = document.getElementById('hamburger');
 const mobileMenu = document.getElementById('mobileMenu');
